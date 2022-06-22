@@ -43,6 +43,8 @@ namespace game
 
 	void Cmd_TokenizeString(const char* text);
 	void Cmd_EndTokenizeString();
+
+	void Cbuf_Execute(int localClientNum, int controllerIndex);
 }
 
 uintptr_t operator"" _b(const uintptr_t ptr);

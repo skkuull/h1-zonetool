@@ -45,6 +45,14 @@ namespace game
 		cmd_argsPrivate->totalUsedArgvPool -= argc;
 		cmd_argsPrivate->totalUsedTextPool -= cmd_argsPrivate->usedTextPool[nesting];
 	}
+
+	void Cbuf_Execute(int localClientNum, int controllerIndex)
+	{
+		Sys_EnterCriticalSection(72);
+		Cbuf_FuncExecute(localClientNum);
+		Cbuf_ExecuteInternal(localClientNum, controllerIndex);
+		Sys_LeaveCriticalSection(72);
+	}
 }
 
 uintptr_t operator"" _b(const uintptr_t ptr)

@@ -45,7 +45,7 @@ namespace patches
 			dvars::override::register_bool("r_preloadShaders", false, game::DVAR_FLAG_READ);
 
 			utils::hook::nop(0x189514_b, 248); // don't load config file
-			utils::hook::nop(0x156C46_b, 5); // ^
+			//utils::hook::nop(0x156C46_b, 5); // ^ ( causes the game to take long to bootup )
 			utils::hook::set<uint8_t>(0x17F470_b, 0xC3); // don't save config file
 			utils::hook::set<uint8_t>(0x351AA0_b, 0xC3); // disable self-registration
 			utils::hook::set<uint8_t>(0x5BF4E0_b, 0xC3); // init sound system (1)

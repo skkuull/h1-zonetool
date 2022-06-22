@@ -1,6 +1,8 @@
 #include <std_include.hpp>
 #include "loader/component_loader.hpp"
 
+#include "component/scheduler.hpp"
+
 #include "zonetool/zonetool.hpp"
 
 namespace zonetool
@@ -10,7 +12,11 @@ namespace zonetool
 	public:
 		void post_unpack() override
 		{
-			zonetool::start();
+			zonetool::initialize();
+			scheduler::once([]()
+			{
+				zonetool::start();
+			}, scheduler::pipeline::main);
 		}
 	};
 }

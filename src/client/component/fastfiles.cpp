@@ -60,6 +60,9 @@ namespace fastfiles
 			// Don't load extra zones with loadzone
 			utils::hook::nop(0x398061_b, 15);
 			utils::hook::jump(0x398061_b, utils::hook::assemble(skip_extra_zones_stub), true);
+
+			// Allow loading of mixed compressor types
+			utils::hook::nop(0x3687A7_b, 2);
 		}
 	};
 }
