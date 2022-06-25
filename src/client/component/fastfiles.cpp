@@ -25,7 +25,7 @@ namespace fastfiles
 			const auto original = a.newLabel();
 
 			a.pushad64();
-			a.test(esi, 0x80); // allocFlags
+			a.test(esi, 0x400); // allocFlags
 			a.jnz(skip);
 
 			a.bind(original);
@@ -37,9 +37,9 @@ namespace fastfiles
 
 			a.bind(skip);
 			a.popad64();
-			a.mov(r14d, 0x80);
+			a.mov(r14d, 0x400);
 			a.not_(r14d);
-			a.and_(ebp, r14d);
+			a.and_(esi, r14d);
 			a.jmp(0x39814F_b);
 		}
 	}
