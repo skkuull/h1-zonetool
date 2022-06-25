@@ -54,15 +54,14 @@ namespace fastfiles
 #endif
 
 			// Allow loading of unsigned fastfiles
-			utils::hook::set<uint8_t>(0x367B5B_b, 0xEB); // main function
-			utils::hook::nop(0x368153_b, 2); // DB_AuthLoad_InflateInit
+			utils::hook::nop(0x368153_b, 2); // DB_InflateInit
+
+			// Allow loading of mixed compressor types
+			utils::hook::nop(0x3687A7_b, 2);
 
 			// Don't load extra zones with loadzone
 			utils::hook::nop(0x398061_b, 15);
 			utils::hook::jump(0x398061_b, utils::hook::assemble(skip_extra_zones_stub), true);
-
-			// Allow loading of mixed compressor types
-			utils::hook::nop(0x3687A7_b, 2);
 		}
 	};
 }
