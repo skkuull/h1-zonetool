@@ -429,7 +429,7 @@ namespace zonetool
 		
 #ifdef DEBUG
 		// Dump zone to disk (for debugging)
-		buf->save("zonetool\\_debug\\" + this->name_ + ".zone");
+		buf->save("zonetool\\_debug\\" + this->name_ + ".zone", false);
 #endif
 
 		// Compress buffer
